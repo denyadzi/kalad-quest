@@ -144,5 +144,29 @@ class UserController extends Controller
             echo "Адбылася памылка абнаўлення статуса карыстальніка id=$id.\n";
         }
     }
+
+    /**
+     * Змяніць пароль карыстальніку
+     *
+     * @param int $id Ідэнтыфікатар
+     * @param string $password Новы пароль
+     */
+    public function actionChangePassword($id, $password)
+    {
+        $user = User::findOne([
+            'id' => $id,
+            'status' => User::STATUS_DELETED,
+        ]);
+        if ( ! $user) {
+            echo "Карыстальнік з id=$id ня знойдзены.\n";
+            return;
+        }
+        $user->password = $password;
+        if ($user->save()) {
+            echo "Пароль карыстальніка id=$id абноўлены.\n";
+        } else {
+            echo "Адбылася памылка абнаўлення пароля карыстальніка id=$id.\n";
+        }
+    }
 }
 
