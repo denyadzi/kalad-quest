@@ -155,7 +155,7 @@ class UserController extends Controller
     {
         $user = User::findOne([
             'id' => $id,
-            'status' => User::STATUS_DELETED,
+            'status' => User::STATUS_ACTIVE,
         ]);
         if ( ! $user) {
             echo "Карыстальнік з id=$id ня знойдзены.\n";
