@@ -26,7 +26,7 @@ jQuery(function($) {
             && response.task_passed
         ) {
             clearInterval(pollInt);
-            location.reload();
+            location.href = '/quest/';
         }
     }
 
